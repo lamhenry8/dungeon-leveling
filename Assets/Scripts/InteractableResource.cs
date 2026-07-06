@@ -18,7 +18,7 @@ public class InteractableResource : MonoBehaviour
         resourceCounter = FindAnyObjectByType<ResourceCounter>();
     }
 
-    public void Interact()
+    public virtual void Interact()
     {
         if (usesRemaining <= 0)
         {
