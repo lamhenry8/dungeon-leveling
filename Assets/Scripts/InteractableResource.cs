@@ -1,0 +1,40 @@
+using UnityEngine;
+
+public class InteractableResource : MonoBehaviour
+{
+    public string resourceName = "Apple";
+    public int amountPerCollect = 1;
+    public int usesRemaining = 1;
+    
+    public string useMessage = "Press E to Interact";
+    public string interactTrigger = "PickFruit";
+    public bool destroyWhenEmpty = true;
+
+
+    private ResourceCounter resourceCounter;
+
+    void Start()
+    {
+        resourceCounter = FindAnyObjectByType<ResourceCounter>();
+    }
+
+    public void Interact()
+    {
+        if (usesRemaining <= 0)
+        {
+            return;
+        }
+
+        if (resourceCounter != null)
+        {
+            resourceCounter.AddResource(resourceName, amountPerCollect);
+        }
+
+        usesRemaining--;
+
+        if (usesRemaining <= 0 && destroyWhenEmpty)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+}
