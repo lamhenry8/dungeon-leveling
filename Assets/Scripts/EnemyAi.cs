@@ -28,8 +28,13 @@ public class EnemyAi : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("NestedParentArmature_Unpack").transform;
-        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (!TryGetComponent(out agent))
+        {
+            Debug.LogError($"EnemyAi on '{gameObject.name}' requires a NavMeshAgent component on the same GameObject.", this);
+            enabled = false;
+        }
     }
 
     private void Update()
