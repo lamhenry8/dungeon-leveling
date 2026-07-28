@@ -13,7 +13,7 @@ public class healthBar : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        health = maxHealth;    
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -30,11 +30,12 @@ public class healthBar : MonoBehaviour
             easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, lerpSpeed);
         }
 
-        
+
     }
 
-    void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
+        health = Mathf.Clamp(health, 0, maxHealth);
     }
 }
