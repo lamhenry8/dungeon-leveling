@@ -9,6 +9,7 @@ public class EnemyAi : MonoBehaviour
     public Transform player;
 
     public LayerMask whatIsGround, whatIsPlayer;
+    public healthBar healthBarUI;
 
     public float health;
 
@@ -60,6 +61,7 @@ public class EnemyAi : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
+        Debug.Log("Patroling!");
     }
     private void SearchWalkPoint()
     {
@@ -76,6 +78,7 @@ public class EnemyAi : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        Debug.Log("Chasing player!");
     }
 
     private void AttackPlayer()
@@ -87,15 +90,14 @@ public class EnemyAi : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);  
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+        Debug.Log("Attacking player!");
     }
     private void ResetAttack()
     {
@@ -106,7 +108,15 @@ public class EnemyAi : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        if (healthBarUI != null)
+        {
+            healthBarUI.health = health;
+        }
+
+        if (health <= 0)
+        {
+            Invoke(nameof(DestroyEnemy), 0.5f);
+        }
     }
     private void DestroyEnemy()
     {
