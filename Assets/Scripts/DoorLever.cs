@@ -12,7 +12,7 @@ public class DoorLever : InteractableResource
         usesRemaining = 999;
     }
 
-    public override void Interact()
+    public override void Interact(Inventory inventory)
     {
         if (door != null)
         {

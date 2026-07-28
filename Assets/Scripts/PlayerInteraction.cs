@@ -9,6 +9,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float interactionRange = 5f;
     [SerializeField] private TextMeshProUGUI promptText;
 
+    public Inventory inventory;
+
     private InteractableResource currentResource;
     private Animator animator;
     private bool isInteracting;
@@ -112,7 +114,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (currentResource != null)
         {
-            currentResource.Interact();
+            currentResource.Interact(inventory);
         }
 
         yield return interactDelay;

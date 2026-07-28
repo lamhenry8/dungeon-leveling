@@ -26,7 +26,7 @@ public class Sword : InteractableResource
         animator = FindAnyObjectByType<Animator>();
     }
 
-    public override void Interact()
+    public override void Interact(Inventory inventory)
     {
         if (isPickedUp)
         {

@@ -6,7 +6,6 @@ public class RestPoint : InteractableResource
 
     void Start()
     {
-        resourceName = "Rest Point";
         useMessage = "Press E to Rest";
         interactTrigger = "PickFruit";
         destroyWhenEmpty = false;
@@ -14,7 +13,7 @@ public class RestPoint : InteractableResource
         potionManager = FindAnyObjectByType<Potions>();
     }
 
-    public override void Interact()
+    public override void Interact(Inventory inventory)
     {
         if (potionManager != null && potionManager.HasVial())
         {

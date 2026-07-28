@@ -6,13 +6,11 @@ public class PotionVial : InteractableResource
 
     void Start()
     {
-        resourceName = "Potion Vial";
         useMessage = "Press E to acquire Potion Vial";
-        // interactTrigger = "PickFruit";
         potionManager = FindAnyObjectByType<Potions>();
     }
 
-    public override void Interact()
+    public override void Interact(Inventory inventory)
     {
         if (usesRemaining <= 0)
         {
