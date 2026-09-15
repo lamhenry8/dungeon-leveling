@@ -2,7 +2,7 @@
 
 ## Game Concept
 
-A third-person dungeon crawler: explore a castle dungeon, harvest resources from ore and monsters, gear up with what you find, and take on the dungeon boss.
+A third-person action role-playing game: explore a castle dungeon, harvest resources from ore and monsters, gear up with what you find, and take on the dungeon boss.
 
 ## Objective
 
